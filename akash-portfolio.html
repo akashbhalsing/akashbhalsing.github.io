@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akash Bhalsing — Data & BI Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A1120;
+    --ink-2:#0F1830;
+    --ink-3:#131D38;
+    --paper:#EFEAE0;
+    --text:#E4E7ED;
+    --text-dim:#B7BECD;
+    --muted:#8892A6;
+    --teal:#3FC2AC;
+    --teal-dim:#1F5B52;
+    --amber:#E3AA4E;
+    --line:rgba(228,231,237,0.14);
+    --line-strong:rgba(228,231,237,0.26);
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono:'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--text);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--teal-dim); color:#fff;}
+  a{color:var(--teal);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--amber); outline-offset:3px;}
+  img{max-width:100%;}
+
+  .wrap{
+    max-width:820px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- Nav ---------- */
+  nav.top{
+    position:sticky; top:0; z-index:20;
+    background:rgba(10,17,32,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.top .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:14px; padding-bottom:14px;
+  }
+  nav.top .mark{
+    font-family:var(--serif); font-weight:600; font-size:17px; color:var(--text);
+    text-decoration:none;
+  }
+  nav.top ul{
+    list-style:none; display:flex; gap:26px; margin:0; padding:0;
+  }
+  nav.top a{
+    color:var(--text-dim); text-decoration:none; font-size:14px;
+    padding-bottom:2px; border-bottom:1px solid transparent;
+    transition:color .15s, border-color .15s;
+  }
+  nav.top a:hover{ color:var(--text); border-color:var(--line-strong); }
+  @media (max-width:600px){ nav.top ul{ gap:16px; } nav.top ul li:nth-child(3){display:none;} }
+
+  /* ---------- Hero ---------- */
+  header.hero{ padding:76px 0 54px; border-bottom:1px solid var(--line); }
+  header.hero .role-line{
+    font-family:var(--mono); font-size:13px; letter-spacing:.02em;
+    color:var(--teal); margin:0 0 18px;
+  }
+  header.hero h1{
+    font-family:var(--serif); font-weight:600; font-size:clamp(40px,7vw,62px);
+    line-height:1.02; margin:0 0 14px; color:#fff;
+  }
+  header.hero .lede{
+    max-width:58ch; font-size:18px; line-height:1.7; color:var(--text-dim);
+    margin:0 0 40px;
+  }
+  header.hero .lede strong{ color:var(--text); font-weight:500; }
+
+  .stats{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    margin-bottom:32px;
+  }
+  .stats .stat{
+    padding:18px 18px 18px 0; border-right:1px solid var(--line);
+  }
+  .stats .stat:last-child{ border-right:none; padding-right:0; }
+  .stats .num{
+    font-family:var(--mono); font-weight:500; font-size:clamp(22px,3.4vw,30px);
+    color:var(--amber); display:block; font-variant-numeric:tabular-nums;
+  }
+  .stats .num.teal{ color:var(--teal); }
+  .stats .label{ font-size:12.5px; color:var(--muted); margin-top:6px; line-height:1.4; }
+  @media (max-width:640px){
+    .stats{ grid-template-columns:repeat(2,1fr); }
+    .stats .stat{ border-bottom:1px solid var(--line); padding-bottom:16px; margin-bottom:2px;}
+  }
+
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:6px 22px; font-size:14px; color:var(--text-dim);
+  }
+  .hero-meta a{ color:var(--text-dim); text-decoration:none; border-bottom:1px solid var(--line-strong); }
+  .hero-meta a:hover{ color:var(--teal); border-color:var(--teal); }
+
+  /* ---------- Sections ---------- */
+  section{ padding:64px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  h2.head{
+    font-family:var(--serif); font-weight:600; font-size:28px; color:#fff;
+    margin:0 0 40px; padding-bottom:16px; border-bottom:1px solid var(--line-strong);
+  }
+  .section-intro{ color:var(--text-dim); max-width:60ch; margin:-24px 0 40px; font-size:15.5px; }
+
+  /* ---------- Experience ---------- */
+  .job{
+    display:grid; grid-template-columns:170px 1fr; gap:28px;
+    padding:28px 0; border-top:1px solid var(--line);
+  }
+  .job:first-of-type{ border-top:none; padding-top:0; }
+  .job .when{
+    font-family:var(--mono); font-size:13px; color:var(--muted); padding-top:3px;
+  }
+  .job .org{ font-size:17px; font-weight:600; color:var(--text); margin:0 0 3px; }
+  .job .title{ font-size:14.5px; color:var(--teal); margin:0 0 14px; }
+  .job ul{ margin:0; padding-left:18px; color:var(--text-dim); }
+  .job li{ margin-bottom:9px; font-size:15px; line-height:1.65; }
+  .job li:last-child{ margin-bottom:0; }
+  .job li b{ color:var(--text); font-weight:600; }
+  @media (max-width:640px){
+    .job{ grid-template-columns:1fr; gap:8px; }
+  }
+
+  /* ---------- Projects ---------- */
+  .proj-list{ display:flex; flex-direction:column; }
+  .proj{
+    padding:26px 0; border-top:1px solid var(--line);
+    display:grid; grid-template-columns:1fr auto; gap:20px; align-items:start;
+  }
+  .proj:first-child{ border-top:none; padding-top:0; }
+  .proj h3{ font-size:17px; font-weight:600; color:var(--text); margin:0 0 8px; }
+  .proj p{ font-size:14.5px; color:var(--text-dim); margin:0; max-width:62ch; line-height:1.6; }
+  .proj .metric{ font-family:var(--mono); color:var(--amber); }
+  .proj .repo-link{
+    font-family:var(--mono); font-size:13px; white-space:nowrap; text-decoration:none;
+    color:var(--teal); border:1px solid var(--teal-dim); padding:6px 12px; border-radius:3px;
+    transition:background .15s, color .15s;
+  }
+  .proj .repo-link:hover{ background:var(--teal); color:var(--ink); }
+  @media (max-width:600px){ .proj{ grid-template-columns:1fr; } }
+
+  .repo-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:1px;
+    background:var(--line); border:1px solid var(--line); margin-top:44px;
+  }
+  .repo-grid a{
+    display:block; background:var(--ink); padding:20px 22px; text-decoration:none;
+    transition:background .15s;
+  }
+  .repo-grid a:hover{ background:var(--ink-2); }
+  .repo-grid .rname{ font-family:var(--mono); font-size:14px; color:var(--text); margin-bottom:6px; }
+  .repo-grid .rdesc{ font-size:13.5px; color:var(--muted); line-height:1.55; }
+  @media (max-width:640px){ .repo-grid{ grid-template-columns:1fr; } }
+  .repo-note{ font-size:13px; color:var(--muted); margin-top:16px; }
+
+  /* ---------- Skills ---------- */
+  .skill-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:36px 48px;
+  }
+  .skill-group h3{
+    font-size:13px; font-family:var(--mono); color:var(--amber);
+    margin:0 0 12px; font-weight:500;
+  }
+  .skill-group p{ margin:0; color:var(--text-dim); font-size:15px; line-height:1.7; }
+  @media (max-width:640px){ .skill-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Education / Certs ---------- */
+  .ed-row{
+    display:grid; grid-template-columns:1fr 1fr; gap:48px;
+  }
+  .ed-row h3{ font-size:13px; font-family:var(--mono); color:var(--amber); margin:0 0 16px; font-weight:500; }
+  .ed-row .degree{ font-size:16px; color:var(--text); margin:0 0 4px; font-weight:500; }
+  .ed-row .sub{ font-size:14px; color:var(--muted); margin:0; }
+  .cert-list{ list-style:none; margin:0; padding:0; }
+  .cert-list li{
+    font-size:14.5px; color:var(--text-dim); padding:9px 0; border-top:1px solid var(--line);
+  }
+  .cert-list li:first-child{ border-top:none; padding-top:0; }
+  .langs{ margin-top:28px; font-size:14px; color:var(--muted); }
+  @media (max-width:640px){ .ed-row{ grid-template-columns:1fr; gap:32px; } }
+
+  /* ---------- Footer / contact ---------- */
+  footer{ padding:60px 0 70px; }
+  footer h2.head{ margin-bottom:24px; }
+  footer .lede{ color:var(--text-dim); max-width:52ch; font-size:16px; margin:0 0 34px; }
+  .contact-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:14px 40px;
+  }
+  .contact-grid a, .contact-grid span{
+    display:flex; justify-content:space-between; align-items:baseline;
+    border-top:1px solid var(--line); padding:14px 0; text-decoration:none;
+    color:var(--text); font-size:15px;
+  }
+  .contact-grid .k{ color:var(--muted); font-family:var(--mono); font-size:12.5px; }
+  .contact-grid a:hover .v{ color:var(--teal); }
+  footer .foot-note{ margin-top:48px; font-size:12.5px; color:var(--muted); }
+  @media (max-width:640px){ .contact-grid{ grid-template-columns:1fr; } }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="mark" href="#top">Akash Bhalsing</a>
+    <ul>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="role-line">Senior Data Analyst — BI &amp; Analytics, BFSI</p>
+    <h1>Akash Bhalsing</h1>
+    <p class="lede">He builds the analytics backbone behind a large motor insurer — <strong>dashboards, pipelines, and reporting</strong> that turn multi-source policy and claims data into decisions leadership actually acts on. Four and a half years deep in BFSI and general insurance analytics, with growing range on Azure Databricks and cloud-scale data work.</p>
+
+    <div class="stats">
+      <div class="stat"><span class="num">4.5+</span><span class="label">Years in BFSI &amp; insurance analytics</span></div>
+      <div class="stat"><span class="num teal">10M+</span><span class="label">Policy &amp; claims records analyzed for one dashboard</span></div>
+      <div class="stat"><span class="num">30%</span><span class="label">Cut in report turnaround time</span></div>
+      <div class="stat"><span class="num teal">₹50Cr+</span><span class="label">In underwriting decisions informed</span></div>
+    </div>
+
+    <div class="hero-meta">
+      <span>Mumbai, India</span>
+      <a href="mailto:bhalsingakash4214@gmail.com">bhalsingakash4214@gmail.com</a>
+      <a href="tel:+917021896964">+91 70218 96964</a>
+      <a href="https://www.linkedin.com/in/akash-bhalsing/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/akashbhalsing" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</header>
+
+<section id="experience">
+  <div class="wrap">
+    <h2 class="head">Experience</h2>
+
+    <div class="job">
+      <div class="when">Mar 2025 — Present</div>
+      <div>
+        <p class="org">ICICI Lombard General Insurance</p>
+        <p class="title">Senior Manager, Motor Analytics</p>
+        <ul>
+          <li>Designed a branch-level <b>Business Opportunity Dashboard</b> pulling together 10+ internal and public data sources in Python, Power BI, and Excel to surface untapped market potential across geographies.</li>
+          <li>Built interactive Power BI dashboards with DAX-driven KPIs and drill-through reports for C-suite stakeholders, cutting report turnaround time by <b>30%</b>.</li>
+          <li>Set up automated, alert-driven reporting pipelines with Power Automate and Power BI, giving real-time visibility on 15+ business KPIs and eliminating recurring ad hoc requests.</li>
+          <li>Used Azure Databricks to build and optimize large-scale pipelines on multi-source policy and claims data, improving reliability and cutting processing time for downstream reporting.</li>
+          <li>Delivered industry trend analyses across Insurance, MGA, and Reinsurance, compiling research used directly in board-level strategy sessions.</li>
+          <li>Maintained data lineage documentation and KPI dictionaries so the analytics function reports from a single source of truth.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Dec 2023 — Mar 2025</div>
+      <div>
+        <p class="org">Reliance General Insurance</p>
+        <p class="title">Manager, Retail &amp; Group Health Underwriting</p>
+        <ul>
+          <li>Built daily, weekly, and monthly Power BI dashboards for Retail and Group Health lines, giving senior leadership real-time P&amp;L visibility and cutting manual reporting effort by <b>40%</b>.</li>
+          <li>Published monthly P&amp;L reports on GWP, NWP, loss ratio, claim frequency, and ACS that directly shaped underwriting strategy and portfolio decisions.</li>
+          <li>Led end-to-end analytics for the RUSO (Rural &amp; Social Obligation) project — SQL extraction, Python feature engineering, and executive dashboards that influenced <b>₹50Cr+</b> in underwriting decisions.</li>
+          <li>Designed CFAR (Cancel For Any Reason) partner-wise P&amp;L tracking, cutting manual effort by 50% and speeding up partner performance reviews.</li>
+          <li>Automated repetitive workflows in Python, Excel Macros, and Power Automate, reducing operational costs by 20% and manual effort by 40% across underwriting analytics.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Feb 2022 — Nov 2023</div>
+      <div>
+        <p class="org">Brain Vision Technology</p>
+        <p class="title">Data Analyst</p>
+        <ul>
+          <li>Built interactive Tableau and Power BI dashboards for Retail and BFSI clients, speeding up interpretation and decision-making cycles.</li>
+          <li>Ran customer segmentation with K-Means clustering and RFM models to identify high-value cohorts for targeted campaigns.</li>
+          <li>Delivered weekly and monthly reporting to client leadership in Python, Power BI, and Excel across multiple accounts.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2 class="head">Key projects</h2>
+
+    <div class="proj-list">
+      <div class="proj">
+        <div>
+          <h3>Branch-level business opportunity dashboard</h3>
+          <p>Analyzed <span class="metric">10M+</span> policy and claims records in Python and SQL to flag high-potential geographies for motor insurance growth, surfacing <span class="metric">15–20%</span> untapped market opportunity. Interactive Power BI and Excel views let senior management prioritize emerging vs. prominent markets by real-time signal.</p>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div>
+          <h3>Industry benchmarking dashboard</h3>
+          <p>Aggregated insurance data from IRDAI, government portals, and internal systems into a Power BI dashboard tracking 10+ industry KPIs — later adopted as the strategy team's standard competitor benchmarking tool for executive planning.</p>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div>
+          <h3>CFAR automation dashboard</h3>
+          <p>Built an end-to-end Python and Power BI workflow for CFAR partner P&amp;L reporting, turning a 3-day manual process into a job that runs in <span class="metric">under 1 hour</span>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="repo-grid" id="repos">
+      <a href="https://github.com/akashbhalsing/powerbi-adventureworks-dashboard" target="_blank" rel="noopener">
+        <div class="rname">powerbi-adventureworks-dashboard</div>
+        <div class="rdesc">Power BI dashboard for AdventureWorks sales — exec KPIs, geo map, what-if pricing, AI visuals.</div>
+      </a>
+      <a href="https://github.com/akashbhalsing/azure-databricks-insurance-etl" target="_blank" rel="noopener">
+        <div class="rname">azure-databricks-insurance-etl</div>
+        <div class="rdesc">ETL pipeline for insurance data on PySpark and Azure Databricks — Bronze/Silver/Gold with Delta Lake.</div>
+      </a>
+      <a href="https://github.com/akashbhalsing/sql-insurance-claims-analytics" target="_blank" rel="noopener">
+        <div class="rname">sql-insurance-claims-analytics</div>
+        <div class="rdesc">SQL analytics on motor insurance policies and claims — loss ratio, claim trends, cohort queries.</div>
+      </a>
+      <a href="https://github.com/akashbhalsing/powerbi-maven-market-dashboard" target="_blank" rel="noopener">
+        <div class="rname">powerbi-maven-market-dashboard</div>
+        <div class="rdesc">Power BI dashboard for Maven Market retail sales — KPI tiles, geo map, revenue trending.</div>
+      </a>
+      <a href="https://github.com/akashbhalsing/insurance-dimensional-model-dq" target="_blank" rel="noopener">
+        <div class="rname">insurance-dimensional-model-dq</div>
+        <div class="rdesc">Star-schema dimensional model and data-quality suite for motor insurance — PySpark, DAX.</div>
+      </a>
+      <a href="https://github.com/akashbhalsing/Customer-Segmentation" target="_blank" rel="noopener">
+        <div class="rname">Customer-Segmentation</div>
+        <div class="rdesc">Customer segmentation using RFM analysis and K-means clustering in Python.</div>
+      </a>
+    </div>
+    <p class="repo-note">Pinned repositories from <a href="https://github.com/akashbhalsing" target="_blank" rel="noopener" style="color:var(--muted); border-bottom:1px solid var(--line-strong);">github.com/akashbhalsing</a> — click through for code and notebooks.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2 class="head">Core competencies</h2>
+    <div class="skill-grid">
+      <div class="skill-group">
+        <h3>BI &amp; visualisation</h3>
+        <p>Power BI (Power Query, DAX, data modelling), Tableau, advanced Excel</p>
+      </div>
+      <div class="skill-group">
+        <h3>Databases</h3>
+        <p>Microsoft SQL Server — T-SQL, stored procedures, query optimization</p>
+      </div>
+      <div class="skill-group">
+        <h3>Programming</h3>
+        <p>Python (pandas, NumPy, scikit-learn, Matplotlib, Seaborn), R, C</p>
+      </div>
+      <div class="skill-group">
+        <h3>Cloud &amp; big data</h3>
+        <p>Azure Databricks</p>
+      </div>
+      <div class="skill-group">
+        <h3>Automation &amp; ETL</h3>
+        <p>Power Automate, Excel macros, Python scripting, ETL pipelines</p>
+      </div>
+      <div class="skill-group">
+        <h3>Reporting &amp; analytics</h3>
+        <p>Financial &amp; P&amp;L reporting, KPI dashboard development, data governance, data quality</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2 class="head">Education &amp; certifications</h2>
+    <div class="ed-row">
+      <div>
+        <h3>Education</h3>
+        <p class="degree">M.Sc. in Physics</p>
+        <p class="sub">Savitribai Phule Pune University, 2021 — GPA 8.5/10</p>
+      </div>
+      <div>
+        <h3>Certifications</h3>
+        <ul class="cert-list">
+          <li>IBM Data Analysis with Python — IBM</li>
+          <li>Foundations of Data: Data Everywhere — Google</li>
+          <li>Prepare Data for Exploration — Google</li>
+          <li>Process Data from Dirty to Clean — Google</li>
+        </ul>
+      </div>
+    </div>
+    <p class="langs">Domain: General Insurance (P&amp;C, Health, Reinsurance), BFSI Analytics, InsurTech, Underwriting Analytics &nbsp;·&nbsp; Languages: English, Hindi, Marathi</p>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2 class="head">Get in touch</h2>
+    <p class="lede">Open to data analyst and BI roles in fintech and SaaS, and to conversations about insurance analytics, dashboarding, or data pipelines.</p>
+    <div class="contact-grid">
+      <a href="mailto:bhalsingakash4214@gmail.com"><span class="k">Email</span> <span class="v">bhalsingakash4214@gmail.com</span></a>
+      <a href="tel:+917021896964"><span class="k">Phone</span> <span class="v">+91 70218 96964</span></a>
+      <a href="https://www.linkedin.com/in/akash-bhalsing/" target="_blank" rel="noopener"><span class="k">LinkedIn</span> <span class="v">in/akash-bhalsing</span></a>
+      <a href="https://github.com/akashbhalsing" target="_blank" rel="noopener"><span class="k">GitHub</span> <span class="v">akashbhalsing</span></a>
+    </div>
+    <p class="foot-note">Mumbai, India</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nums = document.querySelectorAll('.stats .num');
+  if(reduce) return;
+  nums.forEach(function(el){
+    var raw = el.textContent.trim();
+    var match = raw.match(/^([₹]?)([\d.]+)(.*)$/);
+    if(!match) return;
+    var prefix = match[1], target = parseFloat(match[2]), suffix = match[3];
+    var isDecimal = target % 1 !== 0;
+    var start = null, dur = 900;
+    el.textContent = prefix + (isDecimal ? '0.0' : '0') + suffix;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      var val = target * eased;
+      el.textContent = prefix + (isDecimal ? val.toFixed(1) : Math.round(val)) + suffix;
+      if(p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+})();
+</script>
+
+</body>
+</html>
